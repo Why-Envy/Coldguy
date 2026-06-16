@@ -83,33 +83,57 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1.5rem;
 }
+
+/* --- Logo Styling --- */
 .logo {
     display: flex;
     align-items: center;
+    gap: 0.75rem;
     text-decoration: none;
+    transition: var(--transition);
+    flex-shrink: 0;
 }
 
-.header-logo {
-    /* Constrain the height to fit the header naturally */
-    max-height: 160px; 
-    width: auto;
-    /* Optional: Add a slight negative margin if the image has built-in white space */
-    object-fit: contain;
-}
-
-.logo {
+.logo-primary {
     font-size: 1.8rem;
     font-weight: 800;
     color: var(--text-light);
-    text-decoration: none;
     letter-spacing: -0.5px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
-.logo span { color: var(--highlight); }
+.logo:hover {
+    opacity: 0.85;
+}
+
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.logo-accent {
+    color: var(--highlight);
+    margin-left: 0.3rem;
+}
+
+/* Image-based logo support */
+.header-logo {
+    max-height: 50px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
 
 .nav-links {
     display: flex;
@@ -409,6 +433,8 @@ header {
 
 /* --- Responsive Media Queries --- */
 @media (max-width: 992px) {
+    .logo-primary { font-size: 1.5rem; }
+    .logo-icon { width: 32px; height: 32px; }
     .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
     .section-padding { padding: 70px 1.5rem; }
     .hero { min-height: 65vh; }
@@ -434,9 +460,16 @@ header {
         padding: 1rem;
     }
 
-    .logo {
-        font-size: 1.5rem;
+    .logo-primary {
+        font-size: 1.3rem;
         justify-content: center;
+    }
+
+    .logo-icon { width: 28px; height: 28px; }
+
+    .logo {
+        justify-content: center;
+        width: 100%;
     }
 
     .nav-links {
@@ -499,6 +532,9 @@ header {
 }
 
 @media (max-width: 576px) {
+    .logo-primary { font-size: 1.1rem; }
+    .logo-icon { width: 24px; height: 24px; }
+    .logo-text { font-size: 0.9rem; }
     .nav-links { gap: 0.4rem; }
     .nav-links a { font-size: 0.82rem; padding: 0.5rem 0.7rem; }
     .section-padding { padding: 55px 0.9rem; }
