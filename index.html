@@ -31,7 +31,7 @@
         </div>
     </header>
 
-    <section class="hero" style="min-height: 80vh; position: relative; display: flex; align-items: center; overflow: hidden; background: linear-gradient(to right, rgba(11, 19, 43, 0.7), rgba(28, 37, 65, 0.7)), url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; background-repeat: no-repeat; background-position: center;">
+    <section class="hero" style="background: linear-gradient(to right, rgba(11, 19, 43, 0.7), rgba(28, 37, 65, 0.7)), url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; background-repeat: no-repeat; background-position: center;">
         
         <!-- Dark Overlay -->
         <div class="hero-overlay"></div>
@@ -174,26 +174,36 @@
     </footer>
 
     <script>
-        // Hero Image Slider Auto-Rotate
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        const totalSlides = slides.length;
+        // Hero Image Slider Auto-Rotate (guarded)
+        (function(){
+            const slides = document.querySelectorAll('.hero-slide');
+            const totalSlides = slides.length;
+            if (!totalSlides) return; // nothing to do
 
-        function showSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slides[n].classList.add('active');
-        }
+            let currentSlide = 0;
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                if (slides[n]) slides[n].classList.add('active');
+            }
 
-        // Initialize first slide as active
-        showSlide(0);
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
 
-        // Auto-rotate every 5 seconds
-        setInterval(nextSlide, 5000);
+                // Initialize first slide as active
+                showSlide(0);
+
+                // Auto-rotate only when there's more than one slide
+                if (totalSlides > 1) setInterval(nextSlide, 5000);
+        
+                // Apply theme preview if requested via URL (?theme=freeze)
+                try {
+                    const params = new URLSearchParams(window.location.search);
+                    if (params.get('theme') === 'freeze') document.body.classList.add('freeze-theme');
+                } catch(e) {}
+        })();
     </script>
 
 </body>
