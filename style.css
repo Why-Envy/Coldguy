@@ -154,7 +154,7 @@ header {
 
 /* Image-based logo support */
 .header-logo {
-    max-height: 55px;
+    max-height: 80px;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -507,7 +507,7 @@ header {
 @media (max-width: 992px) {
     .logo-primary { font-size: 1.5rem; }
     .logo-icon { width: 32px; height: 32px; }
-    .header-logo { max-height: 48px; }
+    .header-logo { max-height: 58px; }
     .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
     .section-padding { padding: 70px 1.5rem; }
     .hero { min-height: 65vh; }
@@ -540,7 +540,7 @@ header {
 
     .logo-icon { width: 28px; height: 28px; }
     
-    .header-logo { max-height: 45px; }
+    .header-logo { max-height: 55px; }
 
     .logo {
         justify-content: center;
