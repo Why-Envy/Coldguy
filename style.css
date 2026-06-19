@@ -128,7 +128,8 @@ header {
 }
 
 .logo:hover {
-    opacity: 0.85;
+    opacity: 0.9;
+    transform: translateY(-2px);
 }
 
 .logo-icon {
@@ -153,10 +154,12 @@ header {
 
 /* Image-based logo support */
 .header-logo {
-    max-height: 50px;
+    max-height: 55px;
     width: auto;
+    height: auto;
     object-fit: contain;
     display: block;
+    flex-shrink: 0;
 }
 
 .nav-links {
@@ -504,6 +507,7 @@ header {
 @media (max-width: 992px) {
     .logo-primary { font-size: 1.5rem; }
     .logo-icon { width: 32px; height: 32px; }
+    .header-logo { max-height: 48px; }
     .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
     .section-padding { padding: 70px 1.5rem; }
     .hero { min-height: 65vh; }
@@ -535,6 +539,8 @@ header {
     }
 
     .logo-icon { width: 28px; height: 28px; }
+    
+    .header-logo { max-height: 45px; }
 
     .logo {
         justify-content: center;
